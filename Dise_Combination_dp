@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll   long long
+#define pb   push_back
+#define yes   cout<<"YES"<<endl
+#define no   cout<<"NO"<<endl
+#define all(x) (x).begin(), (x).end()
+#define    gcd(a,b)      __gcd(a,b)
+#define    lcm(a,b)  (a*b)/__gcd(a,b)
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+const ll M=1e9+7;
+  const ll mx=1e6+123; 
+ ll dp[mx];
+  
+
+ ll mod(ll x){
+            return ((x%M + M)%M);
+        }
+        ll add(ll a, ll b){
+            return mod(mod(a)+mod(b));
+        }
+
+ll func( ll n)
+{
+    if(n==0)return 1; 
+    if(n<0)return 0; 
+    if(dp[n]!=-1)return dp[n]; 
+    ll x=0; 
+    for(ll i=6; i>=1; i--) x=add(x,func(n-i));
+    return dp[n]=x; 
+
+}
+
+void solve(){
+
+    ll n; cin>>n; 
+    memset(dp,-1, sizeof(dp));
+ 
+    cout<<func(n)<<endl;
+    
+}
+
+int main()
+{
+    optimize();
+    ll t;
+   t=1; 
+    while(t--)
+    {
+        solve();
+    }
+}
+/*****************  ALHAMDULILLAH  *****************/
