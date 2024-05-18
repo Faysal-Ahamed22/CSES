@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll   long long
+#define pb   push_back
+#define yes   cout<<"YES"<<endl
+#define no   cout<<"NO"<<endl
+#define all(x) (x).begin(), (x).end()
+#define    gcd(a,b)      __gcd(a,b)
+#define    lcm(a,b)  (a*b)/__gcd(a,b)
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+ll n1,n2; 
+string s1,s2; 
+const  ll mx=5e3+12; 
+
+
+
+
+void solve(){
+
+    cin>>s1>>s2; 
+    n1=s1.size(); n2=s2.size(); 
+    vector<vector<ll>>dp(n1+1, vector<ll>(n2+1,mx));
+    for(ll i=0; i<=n1; i++)dp[i][0]=i;
+    for(ll i=0; i<=n2; i++)dp[0][i]=i; 
+    for(ll i=1;  i<=n1; i++)
+    {
+        for(ll j=1; j<=n2; j++)
+        {
+            char a=s1[i-1]; 
+            char b=s2[j-1]; 
+            if(a==b)dp[i][j]=dp[i-1][j-1];
+            else 
+            {
+                dp[i][j]=dp[i-1][j-1]+1; 
+
+            }
+            dp[i][j]=min(dp[i][j], dp[i-1][j]+1); 
+            dp[i][j]=min( dp[i][j] , dp[i][j-1]+1); 
+        }
+    }
+    cout<<dp[n1][n2]<<endl; 
+
+   
+
+    
+}
+
+int main()
+{
+    optimize();
+    solve();
+}
+/*****************  ALHAMDULILLAH  *****************/
